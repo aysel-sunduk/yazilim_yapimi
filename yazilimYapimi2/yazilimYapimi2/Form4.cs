@@ -13,14 +13,42 @@ namespace yazilimYapimi2
 {
     public partial class Form4 : Form
     {
-        public Form4()
+        SqlConnection baglan = new SqlConnection("Data Source=LAPTOP-95QVLN84;Initial Catalog=proje1;Integrated Security=True");
+        string kullaniciID;
+
+        public Form4(string kullaniciID)
         {
             InitializeComponent();
-            // ComboBox'a yeni kelime sayılarını manuel olarak ekleyelim
-            cmbBoxKelimeSayi.Items.AddRange(new object[] { 5, 10, 15, 20 }); // Örneğin
+            this.kullaniciID = kullaniciID;
+            CreateKelimelerTable();
         }
 
-        SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-N0OHQLM;Initial Catalog=proje1;Integrated Security=True");
+        private void CreateKelimelerTable()
+        {
+            try
+            {
+                baglan.Open();
+
+                // Kullanıcıya özel kelime tablosunu kontrol et
+                SqlCommand tableCheckCommand = new SqlCommand($"IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'kelimeler{kullaniciID}') CREATE TABLE kelimeler{kullaniciID} (ID INT PRIMARY KEY IDENTITY, ingKelime NVARCHAR(100), turkcesi NVARCHAR(100), orncumle NVARCHAR(255), orncumle2 NVARCHAR(255))", baglan);
+                tableCheckCommand.ExecuteNonQuery();
+
+                baglan.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata oluştu:" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Temizle()
+        {
+            txtBoxIng.Clear();
+            txtBoxTurk.Clear();
+            txtBoxCumle.Clear();
+            txtBoxCumle2.Clear();
+        }
+
         private void tbPageKelimeEkle_Click(object sender, EventArgs e)
         {
 
@@ -28,13 +56,46 @@ namespace yazilimYapimi2
 
         private void btnKelimeKayit_Click(object sender, EventArgs e)
         {
-            baglan.Open();
-            SqlCommand komut = new SqlCommand("Insert into kelimeler (ingKelimeAdi,turKelimeAdi,ornCumle) Values ('" + txtBoxIng.Text.ToString() + "', '" + txtBoxTurk.Text.ToString() + "' , '" + txtBoxCumle.Text.ToString() + "')", baglan);
-            komut.ExecuteNonQuery();
-            baglan.Close();
-            string mesaj = "Kelime başarıyla kaydedildi.";
-            string title = "success";
-            MessageBox.Show(mesaj, title);
+            if (string.IsNullOrWhiteSpace(txtBoxIng.Text) || string.IsNullOrWhiteSpace(txtBoxTurk.Text) || string.IsNullOrWhiteSpace(txtBoxCumle.Text))
+            {
+                MessageBox.Show("Lütfen tüm alanları doldurunuz !", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                try
+                {
+                    baglan.Open();
+
+                    // Eklenmek istenen kelimenin veritabanında olup olmadığını kontrol et
+                    SqlCommand kontrolKomut = new SqlCommand($"SELECT COUNT(*) FROM kelimeler{kullaniciID} WHERE ingKelime = @ingkelime", baglan);
+                    kontrolKomut.Parameters.AddWithValue("@ingkelime", txtBoxIng.Text);
+                    int kelimeSayisi = (int)kontrolKomut.ExecuteScalar();
+
+                    if (kelimeSayisi > 0)
+                    {
+                        MessageBox.Show("Bu kelime zaten veritabanında mevcut!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        // Eğer kelime veritabanında yoksa, yeni kelimeyi ekleyebiliriz
+                        SqlCommand komut = new SqlCommand($"INSERT INTO kelimeler{kullaniciID} (ingKelime, turkcesi, orncumle,orncumle2) VALUES (@ingkelime, @turkcesi, @orncumle,@orncumle2)", baglan);
+                        komut.Parameters.AddWithValue("@ingkelime", txtBoxIng.Text);
+                        komut.Parameters.AddWithValue("@turkcesi", txtBoxTurk.Text);
+                        komut.Parameters.AddWithValue("@orncumle", txtBoxCumle.Text);
+                        komut.Parameters.AddWithValue("@orncumle2", txtBoxCumle2.Text);
+                        komut.ExecuteNonQuery();
+                        MessageBox.Show("Kelime başarıyla kaydedildi", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Temizle();
+                    }
+
+                    baglan.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hata oluştu:" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
 
         }
 
