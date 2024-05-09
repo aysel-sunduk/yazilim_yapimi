@@ -13,7 +13,7 @@ namespace yazilimYapimi2
 {
     public partial class Form4 : Form
     {
-        SqlConnection baglan = new SqlConnection("Data Source=LAPTOP-95QVLN84;Initial Catalog=proje1;Integrated Security=True");
+        SqlConnection baglan = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True");
         string kullaniciID;
 
         public Form4(string kullaniciID)
@@ -30,7 +30,7 @@ namespace yazilimYapimi2
                 baglan.Open();
 
                 // Kullanıcıya özel kelime tablosunu kontrol et
-                SqlCommand tableCheckCommand = new SqlCommand($"IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'kelimeler{kullaniciID}') CREATE TABLE kelimeler{kullaniciID} (ID INT PRIMARY KEY IDENTITY, ingKelime NVARCHAR(100), turkcesi NVARCHAR(100), orncumle NVARCHAR(255), orncumle2 NVARCHAR(255))", baglan);
+                SqlCommand tableCheckCommand = new SqlCommand($"IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'kelimeler{kullaniciID}') CREATE TABLE kelimeler{kullaniciID} (ID INT PRIMARY KEY IDENTITY, EngWord NVARCHAR(100), TurWord NVARCHAR(100), OrnCumle NVARCHAR(255), OrnCumle2 NVARCHAR(255), BilinmeSikligi INT DEFAULT 0, SorulacakTarih DATE DEFAULT NULL)", baglan);
                 tableCheckCommand.ExecuteNonQuery();
 
                 baglan.Close();
@@ -67,7 +67,7 @@ namespace yazilimYapimi2
                     baglan.Open();
 
                     // Eklenmek istenen kelimenin veritabanında olup olmadığını kontrol et
-                    SqlCommand kontrolKomut = new SqlCommand($"SELECT COUNT(*) FROM kelimeler{kullaniciID} WHERE ingKelime = @ingkelime", baglan);
+                    SqlCommand kontrolKomut = new SqlCommand($"SELECT COUNT(*) FROM kelimeler{kullaniciID} WHERE EngWord = @ingkelime", baglan);
                     kontrolKomut.Parameters.AddWithValue("@ingkelime", txtBoxIng.Text);
                     int kelimeSayisi = (int)kontrolKomut.ExecuteScalar();
 
@@ -78,7 +78,7 @@ namespace yazilimYapimi2
                     else
                     {
                         // Eğer kelime veritabanında yoksa, yeni kelimeyi ekleyebiliriz
-                        SqlCommand komut = new SqlCommand($"INSERT INTO kelimeler{kullaniciID} (ingKelime, turkcesi, orncumle,orncumle2) VALUES (@ingkelime, @turkcesi, @orncumle,@orncumle2)", baglan);
+                        SqlCommand komut = new SqlCommand($"INSERT INTO kelimeler{kullaniciID} (EngWord, TurWord, OrnCumle,OrnCumle2) VALUES (@ingkelime, @turkcesi, @orncumle,@orncumle2)", baglan);
                         komut.Parameters.AddWithValue("@ingkelime", txtBoxIng.Text);
                         komut.Parameters.AddWithValue("@turkcesi", txtBoxTurk.Text);
                         komut.Parameters.AddWithValue("@orncumle", txtBoxCumle.Text);
@@ -108,7 +108,8 @@ namespace yazilimYapimi2
         {
           
             //sınav ekranına gider.
-            Form5 form5 = new Form5();
+            this.cmbBoxKelimeSayi.SelectedIndex = 0;
+            Form5 form5 = new Form5(kullaniciID,cmbBoxKelimeSayi);
             form5.ShowDialog();
         }
 
@@ -123,6 +124,11 @@ namespace yazilimYapimi2
         }
 
         private void tbPageSinav_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbBoxKelimeSayi_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

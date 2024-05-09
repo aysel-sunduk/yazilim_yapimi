@@ -33,13 +33,16 @@
             this.btnC = new System.Windows.Forms.Button();
             this.btnB = new System.Windows.Forms.Button();
             this.btnA = new System.Windows.Forms.Button();
-            this.txtBoxSoru = new System.Windows.Forms.TextBox();
+            this.btnSonraki = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblSoru = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSinavBitir
             // 
             this.btnSinavBitir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSinavBitir.Location = new System.Drawing.Point(525, 295);
+            this.btnSinavBitir.Location = new System.Drawing.Point(496, 348);
             this.btnSinavBitir.Name = "btnSinavBitir";
             this.btnSinavBitir.Size = new System.Drawing.Size(209, 55);
             this.btnSinavBitir.TabIndex = 11;
@@ -55,6 +58,7 @@
             this.btnD.Size = new System.Drawing.Size(153, 55);
             this.btnD.TabIndex = 10;
             this.btnD.UseVisualStyleBackColor = true;
+            this.btnD.Click += new System.EventHandler(this.btnD_Click);
             // 
             // btnC
             // 
@@ -64,6 +68,7 @@
             this.btnC.Size = new System.Drawing.Size(148, 55);
             this.btnC.TabIndex = 9;
             this.btnC.UseVisualStyleBackColor = true;
+            this.btnC.Click += new System.EventHandler(this.btnC_Click);
             // 
             // btnB
             // 
@@ -73,6 +78,7 @@
             this.btnB.Size = new System.Drawing.Size(153, 57);
             this.btnB.TabIndex = 8;
             this.btnB.UseVisualStyleBackColor = true;
+            this.btnB.Click += new System.EventHandler(this.btnB_Click);
             // 
             // btnA
             // 
@@ -82,26 +88,63 @@
             this.btnA.Size = new System.Drawing.Size(148, 57);
             this.btnA.TabIndex = 7;
             this.btnA.UseVisualStyleBackColor = true;
+            this.btnA.Click += new System.EventHandler(this.btnA_Click);
             // 
-            // txtBoxSoru
+            // btnSonraki
             // 
-            this.txtBoxSoru.Location = new System.Drawing.Point(12, 12);
-            this.txtBoxSoru.Multiline = true;
-            this.txtBoxSoru.Name = "txtBoxSoru";
-            this.txtBoxSoru.Size = new System.Drawing.Size(327, 165);
-            this.txtBoxSoru.TabIndex = 6;
+            this.btnSonraki.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSonraki.Location = new System.Drawing.Point(496, 251);
+            this.btnSonraki.Name = "btnSonraki";
+            this.btnSonraki.Size = new System.Drawing.Size(164, 55);
+            this.btnSonraki.TabIndex = 12;
+            this.btnSonraki.Text = "BAŞLA";
+            this.btnSonraki.UseVisualStyleBackColor = true;
+            this.btnSonraki.Click += new System.EventHandler(this.btnSonraki_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(604, 184);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(27, 29);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(491, 184);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 29);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Soru :";
+            // 
+            // lblSoru
+            // 
+            this.lblSoru.AutoSize = true;
+            this.lblSoru.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblSoru.Location = new System.Drawing.Point(31, 47);
+            this.lblSoru.Name = "lblSoru";
+            this.lblSoru.Size = new System.Drawing.Size(87, 29);
+            this.lblSoru.TabIndex = 15;
+            this.lblSoru.Text = "label1";
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblSoru);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnSonraki);
             this.Controls.Add(this.btnSinavBitir);
             this.Controls.Add(this.btnD);
             this.Controls.Add(this.btnC);
             this.Controls.Add(this.btnB);
             this.Controls.Add(this.btnA);
-            this.Controls.Add(this.txtBoxSoru);
             this.Name = "Form5";
             this.Text = "Form5";
             this.Load += new System.EventHandler(this.Form5_Load);
@@ -117,6 +160,9 @@
         private System.Windows.Forms.Button btnC;
         private System.Windows.Forms.Button btnB;
         private System.Windows.Forms.Button btnA;
-        private System.Windows.Forms.TextBox txtBoxSoru;
+        private System.Windows.Forms.Button btnSonraki;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSoru;
     }
 }

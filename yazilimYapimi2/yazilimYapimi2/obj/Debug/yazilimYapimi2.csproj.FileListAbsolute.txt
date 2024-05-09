@@ -60,3 +60,34 @@ C:\Users\Tuğba\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\D
 C:\Users\Tuğba\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimY.23AD072F.Up2Date
 C:\Users\Tuğba\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.exe
 C:\Users\Tuğba\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.pdb
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\yazilimYapimi2.exe.config
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\yazilimYapimi2.exe
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\yazilimYapimi2.pdb
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.Auth.dll
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.Core.dll
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.dll
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.Gmail.v1.dll
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\System.CodeDom.dll
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.pdb
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.xml
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.Auth.pdb
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.Auth.xml
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.Core.pdb
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.Core.xml
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.Gmail.v1.pdb
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Google.Apis.Gmail.v1.xml
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\bin\Debug\System.CodeDom.xml
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.csproj.AssemblyReference.cache
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.Form1.resources
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.Form2.resources
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.Form3.resources
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.Form4.resources
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.Form5.resources
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.Properties.Resources.resources
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.csproj.GenerateResource.cache
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.csproj.CoreCompileInputs.cache
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimY.23AD072F.Up2Date
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.exe
+C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi3\yazilimYapimi2\yazilimYapimi2\obj\Debug\yazilimYapimi2.pdb

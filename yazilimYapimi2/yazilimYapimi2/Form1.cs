@@ -18,7 +18,7 @@ namespace yazilimYapimi2
             InitializeComponent();
         }
        
-        SqlConnection baglan = new SqlConnection("Data Source=LAPTOP-95QVLN84;Initial Catalog=proje1;Integrated Security=True");
+        SqlConnection baglan = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True");
         private void Temizle()
         {
             // Hatalı giriş durumunda textbox'ları temizle

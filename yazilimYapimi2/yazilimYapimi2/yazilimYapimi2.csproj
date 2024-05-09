@@ -95,6 +95,7 @@
     <Compile Include="Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kelimeler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="proje1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -102,6 +103,7 @@
       <DependentUpon>proje1DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rule6.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
