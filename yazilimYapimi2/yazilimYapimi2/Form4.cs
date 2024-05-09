@@ -20,6 +20,7 @@ namespace yazilimYapimi2
         {
             InitializeComponent();
             this.kullaniciID = kullaniciID;
+            this.cmbBoxKelimeSayi.SelectedIndex = 0;
             CreateKelimelerTable();
         }
 
@@ -108,7 +109,6 @@ namespace yazilimYapimi2
         {
           
             //sınav ekranına gider.
-            this.cmbBoxKelimeSayi.SelectedIndex = 0;
             Form5 form5 = new Form5(kullaniciID,cmbBoxKelimeSayi);
             form5.ShowDialog();
         }
