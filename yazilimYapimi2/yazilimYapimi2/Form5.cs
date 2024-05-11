@@ -144,12 +144,13 @@ namespace yazilimYapimi2
             // Display feedback to the user based on correctness
             if (isCorrect)
             {
-                rule6._Rule6(baglanti, kelimeler, kullaniciID);
+                rule6._Rule6(baglanti, kelimeler, kullaniciID,true);//truefalse ifadeleri iscorrect ile değiştirilebilir
                 MessageBox.Show("Correct answer!");
                 // You can perform additional actions here for correct answers
             }
             else
             {
+                rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
                 // You can perform additional actions here for wrong answers
             }
@@ -168,11 +169,12 @@ namespace yazilimYapimi2
 
             if (isCorrect)
             {
-                rule6._Rule6(baglanti, kelimeler, kullaniciID);
+                rule6._Rule6(baglanti, kelimeler, kullaniciID,true);
                 MessageBox.Show("Correct answer!");
             }
             else
             {
+                rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
             }
             SetButtonEnabled(false);
@@ -186,11 +188,12 @@ namespace yazilimYapimi2
 
             if (isCorrect)
             {
-                rule6._Rule6(baglanti, kelimeler, kullaniciID);
+                rule6._Rule6(baglanti, kelimeler, kullaniciID, true);
                 MessageBox.Show("Correct answer!");
             }
             else
             {
+                rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
             }
             SetButtonEnabled(false);
@@ -204,11 +207,12 @@ namespace yazilimYapimi2
 
             if (isCorrect)
             {
-                rule6._Rule6(baglanti, kelimeler, kullaniciID);
+                rule6._Rule6(baglanti, kelimeler, kullaniciID, true);
                 MessageBox.Show("Correct answer!");
             }
             else
             {
+                rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
             }
             SetButtonEnabled(false);

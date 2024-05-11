@@ -9,7 +9,7 @@ namespace yazilimYapimi2
 {
     public class Rule6
     {
-        public void SetDateToWords(int bilinensiklik, SqlConnection connection, Kelimeler obj,string kullaniciID)
+        public void SetDateToWords(int bilinensiklik, SqlConnection connection, Kelimeler obj, string kullaniciID)
         {
             DateTime dt = DateTime.Now.Date;
             connection.Open();
@@ -26,6 +26,9 @@ namespace yazilimYapimi2
 
             switch (bilinensiklik)
             {
+                case 0:
+                    //direkt şimdiki zaman olarak geçirmesi için.
+                    break;
                 case 1:
                     newdatetime = newdate.AddDays(1);
                     break;
@@ -60,7 +63,7 @@ namespace yazilimYapimi2
             connection.Close();
         }
 
-        public int SetBilinmeSikliği(SqlConnection baglanti, Kelimeler obj, string kullaniciID)
+        public int SetBilinmeSikliği(SqlConnection baglanti, Kelimeler obj, string kullaniciID, bool bildimi)
         {
             int newresult = 0;
             try
@@ -72,7 +75,15 @@ namespace yazilimYapimi2
                     command1.Parameters.AddWithValue("@EngWord", obj.secilenkelime);
                     object result = command1.ExecuteScalar();
                     newresult = Convert.ToInt32(result);
-                    newresult++;
+                    if (bildimi)
+                    {
+                        newresult++;
+                    }
+                    else
+                    {
+                        newresult=0;
+                    }
+
                     // SQL command to update the table with a condition
 
                     using (SqlCommand command = new SqlCommand($"UPDATE kelimeler{kullaniciID} SET BilinmeSikligi = @BaglantiSayisi WHERE EngWord = @EngWord", baglanti))
@@ -96,9 +107,9 @@ namespace yazilimYapimi2
             return newresult;
         }
 
-        public void _Rule6(SqlConnection baglanti, Kelimeler obj,string kullaniciID)
+        public void _Rule6(SqlConnection baglanti, Kelimeler obj, string kullaniciID, bool dogrubildimi)
         {
-            SetDateToWords(SetBilinmeSikliği(baglanti, obj,kullaniciID), baglanti, obj,kullaniciID);
+            SetDateToWords(SetBilinmeSikliği(baglanti, obj, kullaniciID, dogrubildimi), baglanti, obj, kullaniciID);
         }
 
     }
