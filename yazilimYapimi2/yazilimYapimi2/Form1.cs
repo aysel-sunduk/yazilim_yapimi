@@ -18,17 +18,14 @@ namespace yazilimYapimi2
             InitializeComponent();
         }
        
-        SqlConnection baglan = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True");
+        SqlConnection baglan = new SqlConnection("Data Source=SENA\\MSSQLSERVER01;Initial Catalog=proje1;Integrated Security=True");
         private void Temizle()
         {
             // Hatalı giriş durumunda textbox'ları temizle
             txtBoxEmail.Clear();
             txtBoxPar.Clear();
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
@@ -119,7 +116,6 @@ namespace yazilimYapimi2
             }
             return kullaniciID;
         }
-
 
     }
 }

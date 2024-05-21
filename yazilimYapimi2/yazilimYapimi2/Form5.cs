@@ -16,17 +16,37 @@ namespace yazilimYapimi2
     public partial class Form5 : Form
     {
         private Random random = new Random();
-        private SqlConnection baglanti = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True"); // Veritabanı bağlantı dizesi buraya gelecek
+        private SqlConnection baglanti = new SqlConnection("Data Source=SENA\\MSSQLSERVER01;Initial Catalog=proje1;Integrated Security=True"); // Veritabanı bağlantı dizesi buraya gelecek
         Kelimeler kelimeler = new Kelimeler();
         Rule6 rule6 = new Rule6();
         string kullaniciID;
         System.Windows.Forms.ComboBox comboBox;
 
-        public Form5(string kullaniciID, System.Windows.Forms.ComboBox comboBox)
+
+
+        private int dogruCevapSayisi = 0;
+        private int toplamSoru = 0;
+
+
+        public int GetDogruCevapSayisi()
+        {
+            return dogruCevapSayisi;
+        }
+
+        public int GetToplamSoru()
+        {
+            return toplamSoru;
+        }
+
+
+
+
+            public Form5(string kullaniciID, System.Windows.Forms.ComboBox comboBox)
         {
             InitializeComponent();
             this.kullaniciID = kullaniciID;//Hangi kullanıcjnın girdiğini bilmek için.
             this.comboBox = comboBox;//form4 ten comboboxu al
+      
         }
 
         private string GetTurkishEquivalent(string ingilizceKelime)
@@ -124,36 +144,51 @@ namespace yazilimYapimi2
         }
 
 
+
+
         private void Form5_Load(object sender, EventArgs e)
         {
             lblSoru.Text= "";
+           
         }
 
-        private void btnSinavKapat_Click_1(object sender, EventArgs e)
-        {
 
+
+        
+        private void btnSinavKapat_Click_1(object sender, EventArgs e)
+        { 
             this.Close(); // Form5'i kapat(sınav ekranını kapatır.)
         }
+
+
+
+     
+
 
         private void btnA_Click(object sender, EventArgs e)
         {
 
+
+            toplamSoru++;
             // Check if the answer is correct when button 1 is clicked
             bool isCorrect = CheckAnswer(btnA.Text);
 
             // Display feedback to the user based on correctness
             if (isCorrect)
             {
+                dogruCevapSayisi++;
                 rule6._Rule6(baglanti, kelimeler, kullaniciID,true);//truefalse ifadeleri iscorrect ile değiştirilebilir
                 MessageBox.Show("Correct answer!");
                 // You can perform additional actions here for correct answers
             }
             else
             {
+              
                 rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
                 // You can perform additional actions here for wrong answers
             }
+
 
             // Tüm butonların tıklanabilirliğini tekrar false yap
             SetButtonEnabled(false);
@@ -165,18 +200,23 @@ namespace yazilimYapimi2
 
         private void btnB_Click(object sender, EventArgs e)
         {
+
+            toplamSoru++;
             bool isCorrect = CheckAnswer(btnB.Text);
 
             if (isCorrect)
             {
+                dogruCevapSayisi++;
                 rule6._Rule6(baglanti, kelimeler, kullaniciID,true);
                 MessageBox.Show("Correct answer!");
             }
             else
             {
+               
                 rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
             }
+
             SetButtonEnabled(false);
 
             btnB.Enabled = true;
@@ -184,18 +224,23 @@ namespace yazilimYapimi2
 
         private void btnC_Click(object sender, EventArgs e)
         {
+            toplamSoru++;
+          
             bool isCorrect = CheckAnswer(btnC.Text);
 
             if (isCorrect)
             {
+                dogruCevapSayisi++;
                 rule6._Rule6(baglanti, kelimeler, kullaniciID, true);
                 MessageBox.Show("Correct answer!");
             }
             else
             {
+              
                 rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
             }
+
             SetButtonEnabled(false);
 
             btnC.Enabled = true;
@@ -203,22 +248,33 @@ namespace yazilimYapimi2
 
         private void btnD_Click(object sender, EventArgs e)
         {
+
+            toplamSoru++;
+           
             bool isCorrect = CheckAnswer(btnD.Text);
 
             if (isCorrect)
             {
+                dogruCevapSayisi++;
                 rule6._Rule6(baglanti, kelimeler, kullaniciID, true);
                 MessageBox.Show("Correct answer!");
             }
             else
             {
+               
                 rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
             }
+         
             SetButtonEnabled(false);
 
             btnD.Enabled = true;
         }
+
+
+
+
+
 
         int sayac = 0;
         private void btnSonraki_Click(object sender, EventArgs e) //kelime kalmadığında durduracak fonksiyon bulunacak.
@@ -260,6 +316,7 @@ namespace yazilimYapimi2
                 this.Close();
             }
         }
+       
 
     }
 }

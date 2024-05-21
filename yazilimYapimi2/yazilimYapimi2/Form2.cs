@@ -16,7 +16,7 @@ namespace yazilimYapimi2
     {
 
         //sql connection sağlanır.(Data Source ve Initial Catalog değiştirilecek.)
-        SqlConnection connect = new SqlConnection("Data Source=DESKTOP-N0OHQLM;Initial Catalog=proje1;Integrated Security=True");
+        SqlConnection connect = new SqlConnection("Data Source=SENA\\MSSQLSERVER01;Initial Catalog=proje1;Integrated Security=True");
 
         public Form2()
         {
@@ -114,8 +114,6 @@ namespace yazilimYapimi2
             }
             return exists;
         }
-
-
 
     }
     }

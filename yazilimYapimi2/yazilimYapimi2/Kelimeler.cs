@@ -14,7 +14,7 @@ namespace yazilimYapimi2
         public List<string> ingilizceKelimeler = new List<string>();
         public List<string> secilenIngilizceKelimeler = new List<string>(); // Kullanıcının girdiği İngilizce kelimelerin listesi
         private Random random = new Random();
-        private SqlConnection baglanti = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True");
+        private SqlConnection baglanti = new SqlConnection("Data Source=SENA\\MSSQLSERVER01;Initial Catalog=proje1;Integrated Security=True");
 
         public void KelimeleriGetir(string kullaniciID)
         {
