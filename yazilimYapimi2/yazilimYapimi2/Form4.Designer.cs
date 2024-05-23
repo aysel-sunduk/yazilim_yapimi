@@ -35,6 +35,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbPageKelimeEkle = new System.Windows.Forms.TabPage();
+            this.pictureBoxResim = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -103,9 +104,9 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.pictureBoxResim = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tbPageKelimeEkle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -148,7 +149,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResim)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -198,6 +198,15 @@
             this.tbPageKelimeEkle.TabIndex = 0;
             this.tbPageKelimeEkle.Text = "Kelime Ekleme";
             this.tbPageKelimeEkle.Click += new System.EventHandler(this.tbPageKelimeEkle_Click);
+            // 
+            // pictureBoxResim
+            // 
+            this.pictureBoxResim.Location = new System.Drawing.Point(555, 106);
+            this.pictureBoxResim.Name = "pictureBoxResim";
+            this.pictureBoxResim.Size = new System.Drawing.Size(206, 179);
+            this.pictureBoxResim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxResim.TabIndex = 81;
+            this.pictureBoxResim.TabStop = false;
             // 
             // pictureBox11
             // 
@@ -714,6 +723,7 @@
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(624, 290);
@@ -910,6 +920,7 @@
             this.dataGridView2.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView2.Location = new System.Drawing.Point(16, 82);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -952,27 +963,20 @@
             this.printPreviewDialog1.Text = "Baskı önizleme";
             this.printPreviewDialog1.Visible = false;
             // 
-            // pictureBoxResim
-            // 
-            this.pictureBoxResim.Location = new System.Drawing.Point(555, 106);
-            this.pictureBoxResim.Name = "pictureBoxResim";
-            this.pictureBoxResim.Size = new System.Drawing.Size(206, 179);
-            this.pictureBoxResim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxResim.TabIndex = 81;
-            this.pictureBoxResim.TabStop = false;
-            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 504);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form4";
-            this.Text = "Form4";
+            this.Text = "Kelime Ezberleme Uygulaması";
             this.tabControl1.ResumeLayout(false);
             this.tbPageKelimeEkle.ResumeLayout(false);
             this.tbPageKelimeEkle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResim)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
@@ -1017,7 +1021,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResim)).EndInit();
             this.ResumeLayout(false);
 
         }

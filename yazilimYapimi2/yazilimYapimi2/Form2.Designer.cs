@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.btnKayitOl = new System.Windows.Forms.Button();
             this.txtBoxKayitAdSoyad = new System.Windows.Forms.TextBox();
             this.txtBoxKayitEmail = new System.Windows.Forms.TextBox();
@@ -51,7 +52,7 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.lblKullaniciAdSoyad = new System.Windows.Forms.Label();
+            this.checkBoxsifregoster = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -106,6 +107,7 @@
             this.txtBoxKayitSifre.Name = "txtBoxKayitSifre";
             this.txtBoxKayitSifre.Size = new System.Drawing.Size(189, 30);
             this.txtBoxKayitSifre.TabIndex = 12;
+            this.txtBoxKayitSifre.UseSystemPasswordChar = true;
             // 
             // lblKayitEmail
             // 
@@ -293,14 +295,17 @@
             this.pictureBox14.TabIndex = 48;
             this.pictureBox14.TabStop = false;
             // 
-            // lblKullaniciAdSoyad
+            // checkBoxsifregoster
             // 
-            this.lblKullaniciAdSoyad.AutoSize = true;
-            this.lblKullaniciAdSoyad.Location = new System.Drawing.Point(443, 406);
-            this.lblKullaniciAdSoyad.Name = "lblKullaniciAdSoyad";
-            this.lblKullaniciAdSoyad.Size = new System.Drawing.Size(44, 16);
-            this.lblKullaniciAdSoyad.TabIndex = 49;
-            this.lblKullaniciAdSoyad.Text = "label1";
+            this.checkBoxsifregoster.AutoSize = true;
+            this.checkBoxsifregoster.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkBoxsifregoster.Location = new System.Drawing.Point(297, 280);
+            this.checkBoxsifregoster.Name = "checkBoxsifregoster";
+            this.checkBoxsifregoster.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxsifregoster.TabIndex = 49;
+            this.checkBoxsifregoster.Text = "Şifreyi Göster";
+            this.checkBoxsifregoster.UseVisualStyleBackColor = true;
+            this.checkBoxsifregoster.CheckedChanged += new System.EventHandler(this.checkBoxsifregoster_CheckedChanged);
             // 
             // Form2
             // 
@@ -308,7 +313,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(668, 450);
-            this.Controls.Add(this.lblKullaniciAdSoyad);
+            this.Controls.Add(this.checkBoxsifregoster);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox11);
@@ -332,9 +337,10 @@
             this.Controls.Add(this.lblKayitEmail);
             this.Controls.Add(this.lblKayitSifre);
             this.Controls.Add(this.lblKayitAdSoyad);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Kelime Ezberleme Uygulaması";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -380,6 +386,6 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox14;
-        private System.Windows.Forms.Label lblKullaniciAdSoyad;
+        private System.Windows.Forms.CheckBox checkBoxsifregoster;
     }
 }

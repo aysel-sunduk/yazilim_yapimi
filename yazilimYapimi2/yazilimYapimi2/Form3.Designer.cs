@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.btnYeniSifre = new System.Windows.Forms.Button();
             this.txtBoxSifreAlEmail = new System.Windows.Forms.TextBox();
             this.lblSifreAlEmail = new System.Windows.Forms.Label();
@@ -98,7 +99,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 10);
             this.panel1.TabIndex = 20;
-  
             // 
             // panel2
             // 
@@ -251,9 +251,10 @@
             this.Controls.Add(this.btnYeniSifre);
             this.Controls.Add(this.txtBoxSifreAlEmail);
             this.Controls.Add(this.lblSifreAlEmail);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "Kelime Ezberleme Uygulaması";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();

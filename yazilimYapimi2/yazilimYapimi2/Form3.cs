@@ -79,7 +79,7 @@ namespace yazilimYapimi2
 
             UserCredential credential;
             // Gönderilen dosya projenin debug dosyasına konulacak ve buradaki adres o adres ile değiştirilecek.
-            string jsonUzantisi = @"C:\Users\ACER\Masaüstü\C#Projeleri1\ingkelime\ProjeDeneme\ProjeDeneme3\ProjeDeneme3\bin\Debug\client_secret_498875922383-fcscd9296oko616ag8pcmo77o66r710r.apps.googleusercontent.com.json";
+            string jsonUzantisi = @"C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi_son\yazilimYapimi2\yazilimYapimi2\bin\Debug\client_secret_498875922383-fcscd9296oko616ag8pcmo77o66r710r.apps.googleusercontent.com.json";
 
             using (FileStream stream = new FileStream(jsonUzantisi, FileMode.Open, FileAccess.Read))
             {
@@ -117,11 +117,12 @@ namespace yazilimYapimi2
             return new string(Enumerable.Repeat(chars, 6)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+
         private void SavePasswordToDatabase(string email, string newPassword)
         {
             // Veritabanı bağlantısı oluşturuldu.
             // Data Source ve Initial Catalog değiştirilecek.
-            string connectionString = "Data Source=DESKTOP-N0OHQLM;Initial Catalog=proje1;Integrated Security=True";
+            string connectionString = "Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
 

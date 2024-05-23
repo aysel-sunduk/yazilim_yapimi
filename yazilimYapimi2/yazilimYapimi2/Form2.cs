@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace yazilimYapimi2
 {
@@ -16,7 +17,7 @@ namespace yazilimYapimi2
     {
 
         //sql connection sağlanır.(Data Source ve Initial Catalog değiştirilecek.)
-        SqlConnection connect = new SqlConnection("Data Source=SENA\\MSSQLSERVER01;Initial Catalog=proje1;Integrated Security=True");
+        SqlConnection connect = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True");
 
         public Form2()
         {
@@ -37,7 +38,7 @@ namespace yazilimYapimi2
                 string.IsNullOrWhiteSpace(txtBoxKayitEmail.Text))
             {
                 MessageBox.Show("Lütfen tüm alanları doldurunuz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
+
             }
 
             else if (EmailExists(txtBoxKayitEmail.Text))
@@ -55,18 +56,18 @@ namespace yazilimYapimi2
             form1.Show(); // Form1'i göster
 
             this.Close(); // Form2'yi kapat
-    }
+        }
 
         private void KayitBilgileriniAl()
         {
             try
             {
-               
+
                 string query = "INSERT INTO kullanici (AdSoyad, parola, email) VALUES (@AdSoyad, @Parola, @Email)";
 
                 using (SqlCommand sqlCommand = new SqlCommand(query, connect))
                 {
-                   
+
                     sqlCommand.Parameters.AddWithValue("@AdSoyad", txtBoxKayitAdSoyad.Text);
                     sqlCommand.Parameters.AddWithValue("@Parola", txtBoxKayitSifre.Text);
                     sqlCommand.Parameters.AddWithValue("@Email", txtBoxKayitEmail.Text);
@@ -74,7 +75,7 @@ namespace yazilimYapimi2
                     connect.Close();
                 }
 
-              
+
                 MessageBox.Show("Kayıt yapıldı!", "Başarılı!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch
@@ -115,8 +116,18 @@ namespace yazilimYapimi2
             return exists;
         }
 
+        private void checkBoxsifregoster_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxsifregoster.Checked)
+            {
+                 txtBoxKayitSifre.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtBoxKayitSifre.UseSystemPasswordChar= true;
+            }
+        }
     }
-    }
+}
 
-        
- 
+

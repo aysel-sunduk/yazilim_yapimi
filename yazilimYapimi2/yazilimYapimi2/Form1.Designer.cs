@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnKayit = new System.Windows.Forms.Button();
             this.btnSifre = new System.Windows.Forms.Button();
             this.btnGiris = new System.Windows.Forms.Button();
@@ -109,6 +110,7 @@
             this.txtBoxPar.Name = "txtBoxPar";
             this.txtBoxPar.Size = new System.Drawing.Size(189, 30);
             this.txtBoxPar.TabIndex = 12;
+            this.txtBoxPar.UseSystemPasswordChar = true;
             // 
             // txtBoxEmail
             // 
@@ -304,9 +306,10 @@
             this.Controls.Add(this.lblParola);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Kelime Ezberleme Uygulaması";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

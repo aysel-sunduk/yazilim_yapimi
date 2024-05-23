@@ -13,7 +13,7 @@ namespace yazilimYapimi2
 {
     public partial class Form4 : Form
     {
-        SqlConnection baglan = new SqlConnection("Data Source=SENA\\MSSQLSERVER01;Initial Catalog=proje1;Integrated Security=True");
+        SqlConnection baglan = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True");
         string kullaniciID;
 
 
@@ -61,6 +61,7 @@ namespace yazilimYapimi2
             txtBoxTurk.Clear();
             txtBoxCumle.Clear();
             txtBoxCumle2.Clear();
+            pictureBoxResim.Image = null;
         }
 
         private void tbPageKelimeEkle_Click(object sender, EventArgs e)

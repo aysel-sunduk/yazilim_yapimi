@@ -16,7 +16,7 @@ namespace yazilimYapimi2
     public partial class Form5 : Form
     {
         private Random random = new Random();
-        private SqlConnection baglanti = new SqlConnection("Data Source=SENA\\MSSQLSERVER01;Initial Catalog=proje1;Integrated Security=True"); // Veritabanı bağlantı dizesi buraya gelecek
+        private SqlConnection baglanti = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True"); // Veritabanı bağlantı dizesi buraya gelecek
         Kelimeler kelimeler = new Kelimeler();
         Rule6 rule6 = new Rule6();
         string kullaniciID;
