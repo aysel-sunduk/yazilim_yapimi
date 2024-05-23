@@ -21,6 +21,8 @@ namespace yazilimYapimi2
 {
     public partial class Form3 : Form
     {
+
+
         private readonly string[] Scopes = { GmailService.Scope.GmailSend };
         private readonly string ApplicationName = "GmailApp";
 
@@ -40,10 +42,6 @@ namespace yazilimYapimi2
             return Convert.ToBase64String(data).Replace("+", "-").Replace("/", "_").Replace("=", "");
 
         }
-
-
-
-      
 
         private void btnYeniSifre_Click(object sender, EventArgs e)
         {
@@ -71,14 +69,14 @@ namespace yazilimYapimi2
             Form1 form1 = (Form1)Application.OpenForms["Form1"]; // Zaten açık olan Form1'i al
             form1.Show();   // Form1'i göster
             this.Close(); // Form3'ü kapat
-        
-    }
+
+        }
 
         private void SendEmail(string recipientEmail, string newPassword)
         {
 
             UserCredential credential;
-            // Gönderilen dosya projenin debug dosyasına konulacak ve buradaki adres o adres ile değiştirilecek.
+            // Gönderilen dosya projenin debug(bin) dosyasına konulacak ve buradaki adres o adres ile değiştirilecek.
             string jsonUzantisi = @"C:\Users\ELİF YILMAZ\Source\Repos\yazilim_yapimi_son\yazilimYapimi2\yazilimYapimi2\bin\Debug\client_secret_498875922383-fcscd9296oko616ag8pcmo77o66r710r.apps.googleusercontent.com.json";
 
             using (FileStream stream = new FileStream(jsonUzantisi, FileMode.Open, FileAccess.Read))
@@ -120,42 +118,37 @@ namespace yazilimYapimi2
 
         private void SavePasswordToDatabase(string email, string newPassword)
         {
-            // Veritabanı bağlantısı oluşturuldu.
-            // Data Source ve Initial Catalog değiştirilecek.
-            string connectionString = "Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+
+            string komut = "UPDATE kullanici SET parola = @NewPassword WHERE email = @Email";
+            using (SqlCommand command = new SqlCommand(komut, ServerBaglantisi.baglanti))
             {
 
-                string komut = "UPDATE kullanici SET parola = @NewPassword WHERE email = @Email";
-                using (SqlCommand command = new SqlCommand(komut, connection))
+                command.Parameters.AddWithValue("@NewPassword", newPassword);
+                command.Parameters.AddWithValue("@Email", email);
+
+
+                ServerBaglantisi.baglanti.Open();
+
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+
+                ServerBaglantisi.baglanti.Close();
+
+
+                if (rowsAffected > 0)
                 {
-
-                    command.Parameters.AddWithValue("@NewPassword", newPassword);
-                    command.Parameters.AddWithValue("@Email", email);
-
-
-                    connection.Open();
-
-
-                    int rowsAffected = command.ExecuteNonQuery();
-
-
-                    connection.Close();
-
-
-                    if (rowsAffected > 0)
-                    {
-                        // Başarılı bir şekilde güncellendi
-                        MessageBox.Show("Şifre başarılı bir şekilde güncellendi !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        // Güncelleme başarısız oldu
-                        MessageBox.Show("Şifre güncellenemedi :(.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    // Başarılı bir şekilde güncellendi
+                    MessageBox.Show("Şifre başarılı bir şekilde güncellendi !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Güncelleme başarısız oldu
+                    MessageBox.Show("Şifre güncellenemedi :(.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
     }
+
 }
+

@@ -17,8 +17,6 @@ namespace yazilimYapimi2
         {
             InitializeComponent();
         }
-       
-        SqlConnection baglan = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True");
         private void Temizle()
         {
             // Hatalı giriş durumunda textbox'ları temizle
@@ -29,21 +27,21 @@ namespace yazilimYapimi2
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
-            //textBox tan alınan kullanıcı bilgileri sql de karşılaştırılacak,
+            //textBox tan alınan kullanıcı bilgileri sql de karşılaştırılacak
             //ona göre giriş yapılacak ya da hata mesajı verilecek 
             try
             {
-                baglan.Open();
+                ServerBaglantisi.baglanti.Open();
                 string sql = "Select * from kullanici where email=@emaill AND parola=@parolaa ";
                 SqlParameter prm1 = new SqlParameter("emaill", txtBoxEmail.Text.Trim());
                 SqlParameter prm2 = new SqlParameter("parolaa", txtBoxPar.Text.Trim());
-                SqlCommand komut = new SqlCommand(sql, baglan);
+                SqlCommand komut = new SqlCommand(sql, ServerBaglantisi.baglanti);
                 komut.Parameters.Add(prm1);
                 komut.Parameters.Add(prm2);
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(komut);
                 da.Fill(dt);
-                baglan.Close();
+                ServerBaglantisi.baglanti.Close();
                 if (dt.Rows.Count > 0)
                 {
                     // Form1'de kullanıcı girişi yapıldıktan sonra kullanıcı kimliği alınıyor
@@ -97,9 +95,9 @@ namespace yazilimYapimi2
             string kullaniciID = "";
             try
             {
-                baglan.Open();
+                ServerBaglantisi.baglanti.Open();
                 string sql = "SELECT kullaniciID FROM kullanici WHERE email=@emaill AND parola=@parolaa";
-                SqlCommand komut = new SqlCommand(sql, baglan);
+                SqlCommand komut = new SqlCommand(sql, ServerBaglantisi.baglanti);
                 komut.Parameters.AddWithValue("@emaill", email);
                 komut.Parameters.AddWithValue("@parolaa", parola);
                 SqlDataReader reader = komut.ExecuteReader();
@@ -108,7 +106,7 @@ namespace yazilimYapimi2
                     kullaniciID = reader["kullaniciID"].ToString();
                 }
                 reader.Close();
-                baglan.Close();
+                ServerBaglantisi.baglanti.Close();
             }
             catch (Exception ex)
             {

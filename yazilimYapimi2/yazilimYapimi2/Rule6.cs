@@ -84,11 +84,9 @@ namespace yazilimYapimi2
                         newresult=0;
                     }
 
-                    // SQL command to update the table with a condition
-
                     using (SqlCommand command = new SqlCommand($"UPDATE kelimeler{kullaniciID} SET BilinmeSikligi = @BaglantiSayisi WHERE EngWord = @EngWord", baglanti))
                     {
-                        // Adding parameters to the SQL command
+             
                         command.Parameters.AddWithValue("@BaglantiSayisi", newresult);
                         command.Parameters.AddWithValue("@EngWord", obj.secilenkelime);
 

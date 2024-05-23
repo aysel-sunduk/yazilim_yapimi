@@ -14,7 +14,7 @@ namespace yazilimYapimi2
         public List<string> ingilizceKelimeler = new List<string>();
         public List<string> secilenIngilizceKelimeler = new List<string>(); // Kullanıcının girdiği İngilizce kelimelerin listesi
         private Random random = new Random();
-        private SqlConnection baglanti = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True");
+       
 
         public void KelimeleriGetir(string kullaniciID)
         {
@@ -23,11 +23,11 @@ namespace yazilimYapimi2
                 secilenIngilizceKelimeler.Clear();//aynı kelimeler listenin içinde kalmasın diye
                 ingilizceKelimeler.Clear();
 
-                baglanti.Open();
+                ServerBaglantisi.baglanti.Open();
                 DateTime today = DateTime.Now.Date;
 
-                // Command to fetch all EngWord
-                SqlCommand komutkelime = new SqlCommand($"SELECT EngWord FROM kelimeler{kullaniciID}", baglanti);
+                // Tüm ingilizce kelimeleri çekmek için olan komut.
+                SqlCommand komutkelime = new SqlCommand($"SELECT EngWord FROM kelimeler{kullaniciID}", ServerBaglantisi.baglanti);
                 SqlDataReader readerkelime = komutkelime.ExecuteReader();
 
                 while (readerkelime.Read())
@@ -37,8 +37,8 @@ namespace yazilimYapimi2
 
                 readerkelime.Close();
 
-                // Command to fetch EngWord based on date condition
-                SqlCommand secilenkomut = new SqlCommand($"SELECT EngWord FROM kelimeler{kullaniciID} WHERE SorulacakTarih IS NULL OR SorulacakTarih <= @Today", baglanti);
+                // Sorulacak ingilizce kelimeleri çekmek için olan komut.
+                SqlCommand secilenkomut = new SqlCommand($"SELECT EngWord FROM kelimeler{kullaniciID} WHERE SorulacakTarih IS NULL OR SorulacakTarih <= @Today", ServerBaglantisi.baglanti);
                 secilenkomut.Parameters.AddWithValue("@Today", today);
                 SqlDataReader secilenreader = secilenkomut.ExecuteReader();
 
@@ -59,7 +59,7 @@ namespace yazilimYapimi2
             }
             finally
             {
-                baglanti.Close();
+                ServerBaglantisi.baglanti.Close();
             }
         }
 

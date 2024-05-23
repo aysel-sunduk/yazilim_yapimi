@@ -16,13 +16,11 @@ namespace yazilimYapimi2
     public partial class Form5 : Form
     {
         private Random random = new Random();
-        private SqlConnection baglanti = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True"); // Veritabanı bağlantı dizesi buraya gelecek
+
         Kelimeler kelimeler = new Kelimeler();
         Rule6 rule6 = new Rule6();
         string kullaniciID;
         System.Windows.Forms.ComboBox comboBox;
-
-
 
         private int dogruCevapSayisi = 0;
         private int toplamSoru = 0;
@@ -37,26 +35,22 @@ namespace yazilimYapimi2
         {
             return toplamSoru;
         }
-
-
-
-
-            public Form5(string kullaniciID, System.Windows.Forms.ComboBox comboBox)
+        public Form5(string kullaniciID, System.Windows.Forms.ComboBox comboBox)
         {
             InitializeComponent();
-            this.kullaniciID = kullaniciID;//Hangi kullanıcjnın girdiğini bilmek için.
+            this.kullaniciID = kullaniciID;//Hangi kullanıcının girdiğini bilmek için.
             this.comboBox = comboBox;//form4 ten comboboxu al
-      
-        }
 
+        }
+        
         private string GetTurkishEquivalent(string ingilizceKelime)
         {
             string turkceKarsilik = "";
 
             try
             {
-                baglanti.Open();
-                SqlCommand komut = new SqlCommand($"SELECT TurWord  FROM kelimeler{kullaniciID} WHERE EngWord = @ingilizceKelime", baglanti);
+                ServerBaglantisi.baglanti.Open();
+                SqlCommand komut = new SqlCommand($"SELECT TurWord  FROM kelimeler{kullaniciID} WHERE EngWord = @ingilizceKelime", ServerBaglantisi.baglanti);
                 komut.Parameters.AddWithValue("@ingilizceKelime", ingilizceKelime);
                 SqlDataReader reader = komut.ExecuteReader();
 
@@ -73,7 +67,7 @@ namespace yazilimYapimi2
             }
             finally
             {
-                baglanti.Close();
+                ServerBaglantisi.baglanti.Close();
             }
 
             return turkceKarsilik;
@@ -128,10 +122,10 @@ namespace yazilimYapimi2
 
         private bool CheckAnswer(string selectedAnswer)
         {
-            // Retrieve the correct Turkish equivalent for the displayed English word
+            // Seçilen ingilizce kelime için doğru türkçe kelimeyi getirir.
             string correctTurkishEquivalent = GetTurkishEquivalent(kelimeler.secilenkelime);
 
-            // Check if the selected answer matches the correct Turkish equivalent
+            // Seçilen cevap kelimenin türkçe karşılığı ile eşleşiyor mu diye kontrol edilir.
             return selectedAnswer == correctTurkishEquivalent;
         }
 
@@ -148,21 +142,21 @@ namespace yazilimYapimi2
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            lblSoru.Text= "";
-           
+            lblSoru.Text = "";
+
         }
 
 
 
-        
+
         private void btnSinavKapat_Click_1(object sender, EventArgs e)
-        { 
+        {
             this.Close(); // Form5'i kapat(sınav ekranını kapatır.)
         }
 
 
 
-     
+
 
 
         private void btnA_Click(object sender, EventArgs e)
@@ -170,23 +164,23 @@ namespace yazilimYapimi2
 
 
             toplamSoru++;
-            // Check if the answer is correct when button 1 is clicked
+            // buton 1 basıldığında cevabın doğru olup olmadığını kontrol eder.
             bool isCorrect = CheckAnswer(btnA.Text);
 
-            // Display feedback to the user based on correctness
+           
             if (isCorrect)
             {
                 dogruCevapSayisi++;
-                rule6._Rule6(baglanti, kelimeler, kullaniciID,true);//truefalse ifadeleri iscorrect ile değiştirilebilir
+                rule6._Rule6(ServerBaglantisi.baglanti, kelimeler, kullaniciID, true);
                 MessageBox.Show("Correct answer!");
-                // You can perform additional actions here for correct answers
+                
             }
             else
             {
-              
-                rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
+
+                rule6._Rule6(ServerBaglantisi.baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
-                // You can perform additional actions here for wrong answers
+                
             }
 
 
@@ -207,13 +201,13 @@ namespace yazilimYapimi2
             if (isCorrect)
             {
                 dogruCevapSayisi++;
-                rule6._Rule6(baglanti, kelimeler, kullaniciID,true);
+                rule6._Rule6(ServerBaglantisi.baglanti, kelimeler, kullaniciID, true);
                 MessageBox.Show("Correct answer!");
             }
             else
             {
-               
-                rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
+
+                rule6._Rule6(ServerBaglantisi.baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
             }
 
@@ -225,19 +219,19 @@ namespace yazilimYapimi2
         private void btnC_Click(object sender, EventArgs e)
         {
             toplamSoru++;
-          
+
             bool isCorrect = CheckAnswer(btnC.Text);
 
             if (isCorrect)
             {
                 dogruCevapSayisi++;
-                rule6._Rule6(baglanti, kelimeler, kullaniciID, true);
+                rule6._Rule6(ServerBaglantisi.baglanti, kelimeler, kullaniciID, true);
                 MessageBox.Show("Correct answer!");
             }
             else
             {
-              
-                rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
+
+                rule6._Rule6(ServerBaglantisi.baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
             }
 
@@ -250,22 +244,22 @@ namespace yazilimYapimi2
         {
 
             toplamSoru++;
-           
+
             bool isCorrect = CheckAnswer(btnD.Text);
 
             if (isCorrect)
             {
                 dogruCevapSayisi++;
-                rule6._Rule6(baglanti, kelimeler, kullaniciID, true);
+                rule6._Rule6(ServerBaglantisi.baglanti, kelimeler, kullaniciID, true);
                 MessageBox.Show("Correct answer!");
             }
             else
             {
-               
-                rule6._Rule6(baglanti, kelimeler, kullaniciID, false);
+
+                rule6._Rule6(ServerBaglantisi.baglanti, kelimeler, kullaniciID, false);
                 MessageBox.Show("Wrong answer. Try again!");
             }
-         
+
             SetButtonEnabled(false);
 
             btnD.Enabled = true;
@@ -284,7 +278,7 @@ namespace yazilimYapimi2
             btnSonraki.Text = "SONRAKİ";
             kelimeler.KelimeleriGetir(kullaniciID); // Veritabanından kelimeleri al
 
-            if (kelimeler.secilenIngilizceKelimeler.Count > 1)//buna farklı bir yol bul 1 kelime kalıyor yoksa
+            if (kelimeler.secilenIngilizceKelimeler.Count > 1)
             {
                 SoruOlustur(); // İlk soruyu oluştur
 
@@ -293,7 +287,7 @@ namespace yazilimYapimi2
 
                 if (comboBox.Items[comboBox.SelectedIndex].ToString().Equals("Default"))
                 {
-                    //does nothing
+                    //
                 }
                 else
                 {
@@ -316,7 +310,7 @@ namespace yazilimYapimi2
                 this.Close();
             }
         }
-       
+
 
     }
 }

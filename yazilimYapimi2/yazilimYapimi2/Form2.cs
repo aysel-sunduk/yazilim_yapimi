@@ -16,9 +16,6 @@ namespace yazilimYapimi2
     public partial class Form2 : Form
     {
 
-        //sql connection sağlanır.(Data Source ve Initial Catalog değiştirilecek.)
-        SqlConnection connect = new SqlConnection("Data Source=LAPTOP-3FN5IOBA;Initial Catalog=proje1;Integrated Security=True");
-
         public Form2()
         {
             InitializeComponent();
@@ -65,14 +62,14 @@ namespace yazilimYapimi2
 
                 string query = "INSERT INTO kullanici (AdSoyad, parola, email) VALUES (@AdSoyad, @Parola, @Email)";
 
-                using (SqlCommand sqlCommand = new SqlCommand(query, connect))
+                using (SqlCommand sqlCommand = new SqlCommand(query, ServerBaglantisi.baglanti))
                 {
 
                     sqlCommand.Parameters.AddWithValue("@AdSoyad", txtBoxKayitAdSoyad.Text);
                     sqlCommand.Parameters.AddWithValue("@Parola", txtBoxKayitSifre.Text);
                     sqlCommand.Parameters.AddWithValue("@Email", txtBoxKayitEmail.Text);
                     sqlCommand.ExecuteNonQuery();
-                    connect.Close();
+                    ServerBaglantisi.baglanti.Close();
                 }
 
 
@@ -85,12 +82,12 @@ namespace yazilimYapimi2
         }
         private bool EmailExists(string email)
         {
-            bool exists = false; //dışında olması gerekti :)
+            bool exists = false; 
             try
             {
-                connect.Open();
+                ServerBaglantisi.baglanti.Open();
                 string query = "SELECT email FROM kullanici";
-                using (SqlCommand sqlCommand = new SqlCommand(query, connect))
+                using (SqlCommand sqlCommand = new SqlCommand(query, ServerBaglantisi.baglanti))
                 {
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
@@ -120,11 +117,11 @@ namespace yazilimYapimi2
         {
             if (checkBoxsifregoster.Checked)
             {
-                 txtBoxKayitSifre.UseSystemPasswordChar = false;
+                txtBoxKayitSifre.UseSystemPasswordChar = false;
             }
             else
             {
-                txtBoxKayitSifre.UseSystemPasswordChar= true;
+                txtBoxKayitSifre.UseSystemPasswordChar = true;
             }
         }
     }
